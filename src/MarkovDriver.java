@@ -2,6 +2,12 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.*;
 
+/**
+ * Driver for Markov Model classes
+ * @author ola
+ *
+ */
+
 public class MarkovDriver {
 	public static void main(String[] args) {
 		//String filename = "data/trump-un-sept19-17.txt";
