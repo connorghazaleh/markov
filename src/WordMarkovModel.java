@@ -21,6 +21,16 @@ public class WordMarkovModel implements MarkovInterface<WordGram> {
 		myWords = text.split("\\s+");
 	}
 
+	/**
+	 * Find and return the first index >= start in words at which target occurs.
+	 * Each target.length() sequence of strings is converted to a WordGram
+	 * which is tested against target 
+	 * @param words is the sequence of words being searched
+	 * @param target is the WordGram being searched for
+	 * @param start index in array words at which search begins
+	 * @return index of first occurrence of target (>= start) or -1
+	 * if not found
+	 */
 	private int indexOf(String[] words, WordGram target, int start){
 		int size = target.length();
 		for(int k=start; k < words.length - size+1; k++){
