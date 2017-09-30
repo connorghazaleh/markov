@@ -20,13 +20,17 @@ public class EfficientMarkov extends MarkovModel{
 		myMap.clear();
 		ArrayList<String> dummy;
 		
-		for (int i = 0; i < (myText.length()-myOrder);i++) {
+		for (int i = 0; i <= (myText.length()-myOrder);i++) {
 			dummy = new ArrayList<String>();
+			String next = "";
 			String gram = myText.substring(i,i+myOrder);
-			String next = myText.substring(i+myOrder,i+myOrder+1);
-			if (gram.equals(PSEUDO_EOS)){
-				break;
+			if (i<myText.length()-myOrder){
+				next = myText.substring(i+myOrder,i+myOrder+1);
 			}
+			if (i==myText.length()-myOrder){
+				next = PSEUDO_EOS;
+			}
+			
 			if (!myMap.containsKey(gram)) {
 				dummy.add(next);
 				myMap.put(gram,dummy);
@@ -35,7 +39,10 @@ public class EfficientMarkov extends MarkovModel{
 				dummy.add(next);
 				myMap.put(gram, dummy);
 			}
+			System.out.println(gram);
+			
 		}
+		System.out.println(myMap);
 	}
 	
 	@Override
