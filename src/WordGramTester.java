@@ -20,10 +20,10 @@ public class WordGramTester {
 	@Test
 	public void testHashEquals(){
 		assertEquals("hash fail on equals 0,3",myGrams[0].hashCode(),myGrams[3].hashCode());
-		assertEquals("hash fail on equals 0,3",myGrams[0].hashCode(),myGrams[6].hashCode());
-		assertEquals("hash fail on equals 0,3",myGrams[1].hashCode(),myGrams[4].hashCode());
-		assertEquals("hash fail on equals 0,3",myGrams[2].hashCode(),myGrams[8].hashCode());
-		assertEquals("hash fail on equals 0,3",myGrams[2].hashCode(),myGrams[5].hashCode());
+		assertEquals("hash fail on equals 0,6",myGrams[0].hashCode(),myGrams[6].hashCode());
+		assertEquals("hash fail on equals 1,4",myGrams[1].hashCode(),myGrams[4].hashCode());
+		assertEquals("hash fail on equals 2,8",myGrams[2].hashCode(),myGrams[8].hashCode());
+		assertEquals("hash fail on equals 2,5",myGrams[2].hashCode(),myGrams[5].hashCode());
 	}
 
 	@Test
@@ -46,6 +46,7 @@ public class WordGramTester {
 		Set<Integer> set = new HashSet<Integer>();
 		for(WordGram w : myGrams) {
 			set.add(w.hashCode());
+			//System.out.println(w.hashCode());
 		}
 
 		assertTrue("hash code test", set.size() > 9);
