@@ -36,18 +36,13 @@ public class EfficientWordMarkov extends WordMarkovModel {
 			} 
 		}
 		String[] arr= {"do"};
-		System.out.println(myMap.get(new WordGram(arr,0,1)));
-		
+
 	}
-		
-		//System.out.println(myMap);
-		
 	
 	
 	@Override
 	public ArrayList<String> getFollows(WordGram kGram) {
-		System.out.print(kGram);
-		System.out.println(myMap.get(kGram));
+		
 		if (!myMap.containsKey(kGram)) {
 			throw new NoSuchElementException();
 		}else {

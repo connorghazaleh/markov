@@ -39,8 +39,8 @@ public class WordGram implements Comparable<WordGram>{
 			return false;
 		}else{
 			WordGram wg = (WordGram) other;
-			if(wg.hashCode()!=hashCode())
-				return false;
+			//if(wg.hashCode()!=hashCode())
+			//	return false;
 			for (int b = 0; b < this.length(); b++) {
 				if (!this.myWords[b].equals(wg.myWords[b])) {
 					return false;
