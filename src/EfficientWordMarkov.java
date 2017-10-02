@@ -35,7 +35,7 @@ public class EfficientWordMarkov extends WordMarkovModel {
 				myMap.get(gram).add(next);
 			} 
 		}
-		String[] arr= {"do"};
+		//String[] arr= {"do"};
 
 	}
 	

@@ -21,8 +21,8 @@ public class Benchmark {
 	 * @return a model that implements the proper interface
 	 */
 	private static MarkovInterface<String> getMarkov(int order) {
-		return new MarkovModel(order);
-		//return new EfficientMarkov(order);
+		//return new MarkovModel(order);
+		return new EfficientMarkov(order);
 	}
 	
 	/**
@@ -96,11 +96,11 @@ public class Benchmark {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Starting tests\n");
 		
-		String fileName = "alice.txt";
+		String fileName = "testfile.txt";
 		File file = new File("data/"+fileName);
 		double[] data;
 		String source = TextSource.textFromFile(file);
-		int[] sizes = {100,200,400,800,1600};
+		int[] sizes = {100,200,400,800,1600,5000};
 		
 		for(int size : sizes) {
 			System.out.printf("Varying order, text length %d, source size %d\n",size,source.length());
@@ -112,9 +112,10 @@ public class Benchmark {
 		System.out.printf("\norder\t#chars\tsource\tmean\tsigma\n");
 		int[] orders = {1,5,10};
 		for(int order : orders) {
-			for (int i = 200; i <= 1600; i *= 2) {
-				data = benchmark(i, order, source);
-				System.out.printf("%d\t%d\t%d\t%1.3f\t%1.3f\n", order, i, source.length(),data[0], data[1]);
+			//for (int i = 200; i <= 1600; i *= 2) {
+			for (int i = 0; i < 6; i ++) {
+				data = benchmark(sizes[i], order, source);
+				System.out.printf("%d\t%d\t%d\t%1.3f\t%1.3f\n", order, sizes[i], source.length(),data[0], data[1]);
 			}
 		}
 		

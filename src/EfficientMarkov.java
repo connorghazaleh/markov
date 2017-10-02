@@ -39,10 +39,10 @@ public class EfficientMarkov extends MarkovModel{
 				dummy.add(next);
 				myMap.put(gram, dummy);
 			}
-			System.out.println(gram);
+			//System.out.println(gram);
 			
 		}
-		System.out.println(myMap);
+		//System.out.println(myMap);
 	}
 	
 	@Override
