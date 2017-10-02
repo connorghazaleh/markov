@@ -5,33 +5,26 @@ public class WordGram implements Comparable<WordGram>{
 	private int myHash;
 	private String[] myWords;
 	private int mySize;
-	private int myIndex;
 
 		
 	public WordGram(String[] words, int index, int size) {
 		// complete this constructor
 		myWords = new String[size];
 		mySize = size;
-		myHash = 17;
-		myIndex = index;
 		for (int i = 0; i < size; i++) {
-			myWords[i] = words[myIndex+i];	
+			myWords[i] = words[index];
+			index++;
 		}
-
-		
-		int hash = 0;
-		for (int k = 0; k < myWords.length; k++) {
-			hash += myWords[k].hashCode()*(k+1)*(k+1);
-
-		}
-		myHash = hash;
-		
-		
-		
 	}
 	
 	@Override
 	public int hashCode() {
+		int hash = 0;
+		for (int k = 0; k < myWords.length; k++) {
+			hash += myWords[k].hashCode()*Math.pow(31,k+1);
+
+		}
+		myHash = hash;
 		return myHash;
 	}
 	
@@ -46,6 +39,8 @@ public class WordGram implements Comparable<WordGram>{
 			return false;
 		}else{
 			WordGram wg = (WordGram) other;
+			if(wg.hashCode()!=hashCode())
+				return false;
 			for (int b = 0; b < this.length(); b++) {
 				if (!this.myWords[b].equals(wg.myWords[b])) {
 					return false;
@@ -65,12 +60,11 @@ public class WordGram implements Comparable<WordGram>{
 	}
 	
 	public WordGram shiftAdd(String last) {
-		WordGram A = new WordGram(this.myWords,this.myIndex,this.mySize);
-		for(int k = 0; k < myWords.length-1; k++) {
+		WordGram A = new WordGram(this.myWords,0,this.myWords.length);
+		for(int k = 0; k < this.myWords.length-1; k++) {
 			A.myWords[k] = this.myWords[k+1];
 		}
 		A.myWords[A.myWords.length-1] = last;
-		
 		return A;
 	}
 }
