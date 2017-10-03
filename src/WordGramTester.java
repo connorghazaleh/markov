@@ -77,6 +77,7 @@ public class WordGramTester {
 		assertEquals("shift add length",as.length() == a.length(),true);
 	}
 	
+	//tests the toString() method
 	@Test
 	public void testToString() {
 		String[] words = {"apple", "zebra", "mongoose", "hat","cat"};
@@ -84,12 +85,14 @@ public class WordGramTester {
 		WordGram b = new WordGram(words,1,4);
 		WordGram c = new WordGram(words,0,0);
 		WordGram d = new WordGram(words,2,3);
+		//each case manually creates a string and compares it to the result of the toString() method
 		assertEquals("to string", a.toString(), "apple zebra mongoose hat");
 		assertEquals("to string",b.toString(),"zebra mongoose hat cat");
 		assertEquals("to string",c.toString(),"");
 		assertEquals("to string",d.toString(),"mongoose hat cat");	
 	}
 	
+	//tests the shiftAdd() method
 	@Test
 	public void testShiftAdd() {
 		String[] words = {"apple", "zebra", "mongoose", "hat","cat"};
@@ -106,6 +109,7 @@ public class WordGramTester {
 		WordGram d = new WordGram(words,0,3);
 		WordGram d2 = new WordGram(words5,0,3);
 		System.out.print(d);
+		//each case manually creates a shifted gram and compares it to the result of the shiftAdd() method
 		assertEquals("shift",a.shiftAdd("hat").equals(a2), true);
 		assertEquals("shift",c.shiftAdd("mongoose").equals(c2), true);
 		assertEquals("shift",b.shiftAdd("apple").equals(b2), true);
